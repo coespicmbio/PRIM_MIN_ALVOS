@@ -74,7 +74,56 @@ extrai_componentes <- function(df_blocos) {
         str_replace_all(
         "Rinorea villosiFlora",
         "Rinorea villosiflora"
-      ) #|>
+        ) |>
+        str_replace_all(
+          "Aspilia diffusiFlora",
+          "Aspilia diffusiflora"
+        ) |>
+        str_replace_all(
+          "Canistropsis albiFlora",
+          "Canistropsis albiflora"
+        ) |>
+        str_replace_all(
+          "Ditassa auriFlora",
+          "Ditassa auriflora"
+        ) |>
+        str_replace_all(
+          "Griffinia parviFlora",
+          "Griffinia parviflora"
+        ) |>
+        str_replace_all(
+          "Ipomoea daturiFlora",
+          "Ipomoea daturiflora"
+        ) |>
+        str_replace_all(
+          "Ocotea confertiFlora",
+          "Ocotea confertiflora"
+        ) |>
+        str_replace_all(
+          "PassiFlora",
+          "Passiflora"
+        ) |>
+        str_replace_all(
+          "Pereskia aureiFlora",
+          "Pereskia aureiflora"
+        ) |>
+        str_replace_all(
+          "Portea grandiFlora",
+          "Portea grandiflora"
+        ) |>
+        str_replace_all(
+          "parviFlora",
+          "parviflora"
+        ) |>
+        str_replace_all(
+          "axilliFlora",
+          "axilliflora"
+        ) #|>
+        #str_replace_all(
+#          "axilliFlora",
+ #         "axilliflora"
+  #      ) |>
+        
         # Remove ocorrência literal de "up mata"
         # alguma coisa intruziva em Mata Atlântica
        # str_replace_all(
