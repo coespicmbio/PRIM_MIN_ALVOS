@@ -123,12 +123,12 @@ BH_3_4 |>
 
 Aqui utilizamos `n_distinct()` para evitar supercontagem por repetição de UP.
 
-# 4. Caatinga
+# 4. BH_5_6
 
 ## 4.1 Leitura do arquivo processado
 
 ```{r, warning=FALSE, message=FALSE}
-caatinga <- read_csv("data_output/alvos_Processados_Caatinga.csv")
+BH_5_6 <- read_csv("data_output/alvos_Processados_BH_5_6.csv")
 ```
 
 ## 4.2 Extração de alvos por componente
@@ -136,51 +136,51 @@ caatinga <- read_csv("data_output/alvos_Processados_Caatinga.csv")
 ### Fauna
 
 ```{r}
-alvos_fauna_caatinga <- caatinga |>
+alvos_fauna_BH_5_6 <- BH_5_6 |>
   filter(COMPONENTE == "Fauna") |>
   pull(ALVO) |>
   unique() |>
   sort()
-alvos_fauna_caatinga
+alvos_fauna_BH_5_6
 ```
 
 ### Flora
 
 ```{r}
-alvos_flora_caatinga <- caatinga |>
+alvos_flora_BH_5_6 <- BH_5_6 |>
   filter(COMPONENTE == "Flora") |>
   pull(ALVO) |>
   unique() |>
   sort()
-alvos_flora_caatinga
+alvos_flora_BH_5_6
 ```
 
 ### Ambientes Singulares
 
 ```{r}
-alvos_ambientes_caatinga <- caatinga |>
+alvos_ambientes_BH_5_6 <- BH_5_6 |>
   filter(COMPONENTE == "Ambientes") |>
   pull(ALVO) |>
   unique() |>
   sort()
-alvos_ambientes_caatinga
+alvos_ambientes_BH_5_6
 ```
 
 ### Serviços Ecossistêmicos
 
 ```{r}
-alvos_patrimonio_caatinga <- caatinga |>
+alvos_patrimonio_BH_5_6 <- BH_5_6 |>
   filter(COMPONENTE == "Patrimonio") |>
   pull(ALVO) |>
   unique() |>
   sort()
-alvos_patrimonio_caatinga
+alvos_patrimonio_BH_5_6
 ```
 
 ## 4.3 Contagem de alvos únicos por componente
 
 ```{r}
-caatinga |>
+BH_5_6 |>
   group_by(COMPONENTE) |>
   summarise(n_alvos_unicos = n_distinct(ALVO)) |>
   arrange(desc(n_alvos_unicos))
@@ -188,12 +188,12 @@ caatinga |>
 
 Aqui utilizamos `n_distinct()` para evitar supercontagem por repetição de UP.
 
-# 5. Cerrado
+# 5. BH_7
 
 ## 5.1 Leitura do arquivo processado
 
 ```{r, warning=FALSE, message=FALSE}
-cerrado <- read_csv("data_output/alvos_Processados_Cerrado.csv")
+BH_7 <- read_csv("data_output/alvos_Processados_BH_7.csv")
 ```
 
 ## 5.2 Identificação de gêneros isolados
@@ -209,8 +209,8 @@ Critério:
 -   Restante minúsculo
 
 ```{r}
-generos_isolados <- cerrado$ALVO[
-  grepl("^[A-Z][a-z-]+$", cerrado$ALVO)
+generos_isolados <- BH_7$ALVO[
+  grepl("^[A-Z][a-z-]+$", BH_7$ALVO)
 ]
 
 generos_isolados <- sort(unique(generos_isolados))
@@ -226,7 +226,7 @@ A remoção ocorre apenas quando:
 -   ALVO corresponde ao padrão de gênero isolado
 
 ```{r}
-cerrado <- cerrado %>%
+BH_7 <- BH_7 %>%
   mutate(
     remover = COMPONENTE %in% c("Fauna", "Flora") &
       grepl("^[A-Z][a-z-]+$", ALVO)
@@ -238,8 +238,8 @@ cerrado <- cerrado %>%
 Checagem da limpeza
 
 ```{r}
-generos_isolados <- cerrado$ALVO[
-  grepl("^[A-Z][a-z-]+$", cerrado$ALVO)
+generos_isolados <- BH_7$ALVO[
+  grepl("^[A-Z][a-z-]+$", BH_7$ALVO)
 ]
 
 generos_isolados <- sort(unique(generos_isolados))
@@ -251,51 +251,51 @@ generos_isolados
 ### Fauna
 
 ```{r}
-alvos_fauna_cerrado <- cerrado |>
+alvos_fauna_BH_7 <- BH_7 |>
   filter(COMPONENTE == "Fauna") |>
   pull(ALVO) |>
   unique() |>
   sort()
-alvos_fauna_cerrado
+alvos_fauna_BH_7
 ```
 
 ### Flora
 
 ```{r}
-alvos_flora_cerrado <- cerrado |>
+alvos_flora_BH_7 <- BH_7 |>
   filter(COMPONENTE == "Flora") |>
   pull(ALVO) |>
   unique() |>
   sort()
-alvos_flora_cerrado
+alvos_flora_BH_7
 ```
 
 ### Ambientes Singulares
 
 ```{r}
-alvos_ambientes_cerrado <- cerrado |>
+alvos_ambientes_BH_7 <- BH_7 |>
   filter(COMPONENTE == "Ambientes") |>
   pull(ALVO) |>
   unique() |>
   sort()
-alvos_ambientes_cerrado
+alvos_ambientes_BH_7
 ```
 
 ### Serviços Ecossistêmicos
 
 ```{r}
-alvos_patrimonio_cerrado <- cerrado |>
+alvos_patrimonio_BH_7 <- BH_7 |>
   filter(COMPONENTE == "Patrimonio") |>
   pull(ALVO) |>
   unique() |>
   sort()
-alvos_patrimonio_cerrado
+alvos_patrimonio_BH_7
 ```
 
 ## 5.5 Contagem de alvos únicos por componente
 
 ```{r}
-cerrado |>
+BH_7 |>
   group_by(COMPONENTE) |>
   summarise(n_alvos_unicos = n_distinct(ALVO)) |>
   arrange(desc(n_alvos_unicos))
@@ -306,7 +306,7 @@ Aqui utilizamos `n_distinct()` para evitar supercontagem por repetição de UP.
 ## 5.6 Salvar arquivo de saída
 
 ```{r}
-write_csv(cerrado, "data_output/alvos_Processados_Cerrado.csv")
+write_csv(BH_7, "data_output/alvos_Processados_BH_7.csv")
 ```
 
 
@@ -589,8 +589,8 @@ Aqui utilizamos `n_distinct()` para evitar supercontagem por repetição de UP.
 ```{r}
 alvos <- bind_rows(
   BH_3_4 %>% select(ALVO, COMPONENTE),
-  caatinga %>% select(ALVO, COMPONENTE),
-  cerrado %>% select(ALVO, COMPONENTE),
+  BH_5_6 %>% select(ALVO, COMPONENTE),
+  BH_7 %>% select(ALVO, COMPONENTE),
   mata_atlantica %>% select(ALVO, COMPONENTE),
   pampa %>% select(ALVO, COMPONENTE),
   pantanal %>% select(ALVO, COMPONENTE)
