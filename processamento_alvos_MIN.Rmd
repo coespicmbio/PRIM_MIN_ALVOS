@@ -101,6 +101,16 @@ alvos_ambientes_BH_3_4 <- BH_3_4 |>
 alvos_ambientes_BH_3_4
 ```
 
+Correção pontual que por alguma razão passou pela lista de correções
+
+```{r}
+BH_3_4 <- BH_3_4 |>
+  mutate(ALVO = ALVO |>
+    str_replace_all("Rochas Granitóides Carbonáticas",
+                    "Rochas Granitóides/Carbonáticas")
+  )
+```
+
 ### Serviços Ecossistêmicos
 
 ```{r}
@@ -122,6 +132,13 @@ BH_3_4 |>
 ```
 
 Aqui utilizamos `n_distinct()` para evitar supercontagem por repetição de UP.
+
+## 3.4 Salvar arquivo de saída
+
+```{r}
+write_csv(BH_3_4, "data_output/alvos_Processados_BH_3_4.csv")
+```
+
 
 # 4. BH_5_6
 
