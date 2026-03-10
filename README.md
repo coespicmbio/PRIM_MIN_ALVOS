@@ -15,6 +15,7 @@ bases utilizadas nas análises da COESP/CGCON/ICMBio e possíveis
 interessados no uso dos dados.
 
 ------------------------------------------------------------------------
+<img width="577" height="817" alt="image" src="https://github.com/user-attachments/assets/d51b4c46-774f-4470-ac2e-51f126b34c7c" />
 
 ## Contexto
 
