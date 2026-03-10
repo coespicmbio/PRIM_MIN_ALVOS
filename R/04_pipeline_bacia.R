@@ -19,7 +19,7 @@
 #
 # Retorno:
 #   Dataframe estruturado contendo:
-#     UP | COMPONENTE | ALVO | bacia
+#     UP | COMPONENTE | ALVO | BACIA
 # ------------------------------------------------------------------
 processa_bacia <- function(caminho_alvos, bacia, caminho_correcoes = NULL) {
   # ==============================================================
@@ -34,7 +34,7 @@ processa_bacia <- function(caminho_alvos, bacia, caminho_correcoes = NULL) {
   # ETAPA 2 — Extração dos componentes internos
   #
   # Separa o texto de cada UP em:
-  #   Fauna, Flora, Fitofisionomias, Patrimonio
+  #   Fauna, Flora, Ambientes, Servicos
   #
   # Resultado:
   #   UP | texto | Fauna | Flora | ...
